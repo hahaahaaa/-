@@ -1,0 +1,52 @@
+void MSort(int A[],int tmparr[],int left,int right)
+{
+	int current;
+	if(left < right)
+	{
+		current = (left + right) / 2;
+		Msort(A,tmparr,left,current);
+		Msort(A,tmparr,current + 1,right);
+		Merge(A,tmparr,left,current + 1,right);
+	}
+}
+
+void MergeSort(int A[],int N)
+{
+	int *tmparr;
+	tmparr = malloc(N * sizeof(int));
+	
+	MSort(A,tmparr,0,N - 1);
+	free(tmparr);
+}
+
+
+void Merge(int A[],int tmparr[],int lb,int rb,int re)
+{
+	int le,i,tmpb,num;
+	num = re - lb + 1;
+	tmpb = lb;
+	le = rb - 1;
+	while(lb < le && rb < re)
+	{
+		if(A[lb] > A[rb])
+			tmparr[tmpb++] = A[rb++];
+		else
+			tmparr[tmpb++] = A[lb++];
+	}
+	while(lb < le)
+		tmparr[tmpb++] = A[lb++];
+	while(rb < re)
+		tmparr[tmpb++] = A[rb++];
+	for(i = 0;i < num;i++,re--)
+		A[re] = tmparr[re];
+}
+
+
+
+
+
+
+
+
+
+
