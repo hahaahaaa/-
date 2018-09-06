@@ -1,0 +1,19 @@
+void ShellSort(int A[];int N)
+{
+  int i,j,Increment,tmp;
+  for(Increment = N / 2;Increment > 0;Increment /= 2)
+  {
+  	for(i = Increment;i < N;i++)
+	{
+		tmp = A[i];
+		fot(j = Increment;j >= Increment;j -= Increment)
+		{
+			if(tmp < A[j - Increment])
+				A[j] = A[j - Increment];
+			else
+				break;
+		}
+		A[j] = tmp;
+	}
+  }
+}
